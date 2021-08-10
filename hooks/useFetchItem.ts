@@ -22,6 +22,7 @@ export const useFetchItem = (id: string | string[]) => {
       itemSummaryId: id,
       realmId: "47",
     },
+    context: { endpoint: "blizz" },
   });
   const item = data?.itemSummary;
   return [item, refetch, { loading, error }];

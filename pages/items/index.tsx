@@ -6,7 +6,7 @@ import { Item } from "../../apollo/src/types";
 import Link from "next/link";
 
 const ItemsPage: FC = () => {
-  const [items] = useFetchItems(oreIds);
+  const [items, { error }] = useFetchItems(oreIds);
 
   return (
     <FlexRow>

@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-wowdrops-dev-140750-authRole",
+      "UnauthRoleArn": "arn:aws:iam::012233696177:role/amplify-wowdrops-dev-140750-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::012233696177:role/amplify-wowdrops-dev-140750-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-wowdrops-dev-140750-deployment",
+      "UnauthRoleName": "amplify-wowdrops-dev-140750-unauthRole",
+      "StackName": "amplify-wowdrops-dev-140750",
+      "StackId": "arn:aws:cloudformation:us-west-2:012233696177:stack/amplify-wowdrops-dev-140750/5d8471f0-f6fa-11eb-9630-02d5fabd30ef",
+      "AmplifyAppId": "d2pg3uwegypbm"
+    }
+  }
+}

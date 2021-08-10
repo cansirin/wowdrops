@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { createClient } from "../apollo/src/utils/createClient";
+import "../configureAmplify";
 import { ApolloProvider } from "@apollo/client";
 import { createGlobalStyle } from "styled-components";
 import { Navbar } from "../components/Navbar";

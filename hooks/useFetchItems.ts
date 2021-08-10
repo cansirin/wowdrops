@@ -23,6 +23,7 @@ export const useFetchItems = (ids: string[]): UseFetchItemsResponse => {
     variables: {
       itemSummariesIds: ids,
     },
+    context: { endpoint: "blizz" },
   });
   const items = data?.itemSummaries;
   return [items, { loading, error }];

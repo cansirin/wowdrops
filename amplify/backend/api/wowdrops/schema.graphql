@@ -1,0 +1,5 @@
+type Box @model {
+  id: ID!
+  title: String!
+  itemIds: [String]
+}

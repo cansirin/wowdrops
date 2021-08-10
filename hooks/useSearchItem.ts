@@ -5,6 +5,7 @@ export const useSearchItem = (itemName: string) => {
     variables: {
       searchItemName: itemName,
     },
+    context: { endpoint: "blizz" },
   });
 
   const results = data?.searchItem;
