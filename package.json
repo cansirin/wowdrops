@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "aws-amplify": "^4.2.2",
+    "aws-appsync-auth-link": "^3.0.6",
     "blizzapi": "^2.0.2",
     "next": "11.0.1",
     "react": "17.0.2",
