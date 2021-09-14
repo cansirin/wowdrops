@@ -1,28 +1,37 @@
 import styled from "styled-components";
 import Link from "next/link";
 import { FC } from "react";
-import { FlexCol } from "../Flex";
+import { NextRouter } from "next/router";
 
 const navigations = [
   { name: "Home", url: "/" },
   { name: "Boxes", url: "/boxes" },
   { name: "Items", url: "/items" },
-  { name: "Login", url: "/auth/login" },
 ];
 
-export const Navbar: FC = () => {
+type Props = {
+  router: NextRouter;
+};
+
+export const Navbar: FC<Props> = ({ router }) => {
+  // const [user] = useFetchUser();
+
   return (
     <NavbarContainer>
       <CompanyName>Wow Drops</CompanyName>
       {navigations.map((nav) => {
         return (
-          <FlexCol key={nav.url} style={{ cursor: "pointer" }}>
-            <Link href={nav.url}>
-              <NavbarItem>{nav.name}</NavbarItem>
-            </Link>
-          </FlexCol>
+          <Link href={nav.url} key={nav.url}>
+            <NavbarItem active={router.asPath === nav.url}>
+              {nav.name}
+            </NavbarItem>
+          </Link>
         );
       })}
+      {/*{user && <div>a</div>}*/}
+      <Link href="/auth/login">
+        <NavbarItem active={router.asPath === "/auth/login"}>Login</NavbarItem>
+      </Link>
     </NavbarContainer>
   );
 };
@@ -44,14 +53,19 @@ const NavbarContainer = styled.nav`
   }
 `;
 
-const NavbarItem = styled.a`
+interface NavbarItemProps {
+  active?: boolean;
+}
+
+const NavbarItem = styled.a<NavbarItemProps>`
   color: #d6a2ad;
   font-size: 2rem;
   text-transform: uppercase;
   padding: 2rem 0;
   font-weight: bold;
   letter-spacing: 0.5rem;
-  text-decoration: underline rgba(255, 228, 196, 0);
+  text-decoration: underline
+    rgba(255, 228, 196, ${(props) => (props.active ? 1 : 0)});
   text-underline-offset: 0.2em;
   transition: color 0.3s linear, text-decoration-color 300ms;
   cursor: pointer;
@@ -67,7 +81,7 @@ const NavbarItem = styled.a`
   }
 `;
 
-const CompanyName = styled.h4`
+const CompanyName = styled.h2`
   color: #c4ffd0;
   text-transform: uppercase;
   letter-spacing: 1rem;

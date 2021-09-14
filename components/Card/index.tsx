@@ -9,7 +9,6 @@ type Props = {
   onRemove?: () => void;
   // for react-tooltip
   dataFor?: string;
-  empty?: boolean;
 };
 
 const emptyItem: Item = {
@@ -19,6 +18,7 @@ const emptyItem: Item = {
   price: "???",
   media: "https://picsum.photos/20/30/?blur",
 };
+console.log(gradientColor(emptyItem.quality));
 
 export const Card: FC<Props> = (props) => {
   let item = props.item;
@@ -74,6 +74,13 @@ interface ContainerProps {
   readonly linearGradient?: string;
 }
 
+export const CardBack = styled.div`
+  display: flex;
+  position: relative;
+  height: 15rem;
+  background-image: url(https://picsum.photos/450/450);
+`;
+
 const CardContainer = styled.div<ContainerProps>`
   display: flex;
   position: relative;
@@ -86,6 +93,7 @@ const CardContainer = styled.div<ContainerProps>`
   margin: 0.5rem;
   height: 15rem;
   background: ${(props) => props.linearGradient}, #252635;
+  cursor: pointer;
 
   &:after {
     position: absolute;
@@ -104,8 +112,8 @@ const CardContainer = styled.div<ContainerProps>`
 const CardMedia = styled.img`
   border-radius: 5px;
   margin: auto;
-  width: 6rem;
-  height: 6rem;
+  width: 7rem;
+  height: 7rem;
 `;
 
 const CardDetails = styled.div`

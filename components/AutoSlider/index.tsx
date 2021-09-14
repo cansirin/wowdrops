@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { Dispatch, FC, SetStateAction, useState } from "react";
 import styled from "styled-components";
 import { Button, Card, FlexCol, FlexRow } from "..";
 import { useInterval } from "../../utils/useInterval";
@@ -7,11 +7,13 @@ import Link from "next/link";
 
 type Props = {
   items: Item[];
+  setWinners: Dispatch<SetStateAction<Item[]>>;
 };
 
-export const AutoSlider: FC<Props> = ({ items }) => {
+export const AutoSlider: FC<Props> = ({ items, setWinners }) => {
   const [itemIndex, setItemIndex] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
+  const [winners] = useState<Item[]>([]);
 
   const start = () => {
     if (isRunning) {
@@ -23,14 +25,16 @@ export const AutoSlider: FC<Props> = ({ items }) => {
 
   const stop = () => {
     if (isRunning) {
+      winners.push(items[itemIndex]);
       setIsRunning(false);
+      setWinners(winners);
     } else {
       return;
     }
   };
 
-  useInterval(start, 300);
-  useInterval(stop, 5000);
+  useInterval(start, 300, 3);
+  useInterval(stop, 5000, 3);
 
   return (
     <>
@@ -39,13 +43,14 @@ export const AutoSlider: FC<Props> = ({ items }) => {
           index={itemIndex}
           style={{ transform: `translate3d(${-itemIndex * 100}%, 0, 0)` }}
         >
-          {items.map((item, index) => {
-            return (
-              <Slide key={index}>
-                <Card item={item} />
-              </Slide>
-            );
-          })}
+          {items &&
+            items.map((item, index) => {
+              return (
+                <Slide key={index}>
+                  <Card item={item} />
+                </Slide>
+              );
+            })}
         </SlideshowSlider>
       </Slideshow>
       <FlexCol>

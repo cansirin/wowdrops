@@ -7,3 +7,4 @@ export * from "./Emoji";
 export * from "./Button";
 export * from "./AutoSlider";
 export * from "./Flex";
+export * from "./Flippable";

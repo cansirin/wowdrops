@@ -21,8 +21,8 @@ const ButtonContainer = styled.button`
   );
   margin: 10px;
   padding: 15px 45px;
-  text-align: center;
   text-transform: uppercase;
+  text-align: center;
   transition: 0.5s;
   background-size: 200% auto;
   color: white;
