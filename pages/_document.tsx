@@ -18,6 +18,10 @@ export default class MyDocument extends Document {
         ...initialProps,
         styles: (
           <>
+            <link
+              rel="stylesheet"
+              href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"
+            />
             {initialProps.styles}
             {sheet.getStyleElement()}
           </>
