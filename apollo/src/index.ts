@@ -3,7 +3,6 @@ import { resolvers } from "./resolvers";
 import { typeDefs } from "./schema";
 import { WowApi } from "./dataSources/wowApi";
 import { DataSources } from "apollo-server-core/dist/graphqlOptions";
-
 import config from "../../credentials.json";
 
 interface CustomDataSources {

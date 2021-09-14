@@ -2,7 +2,7 @@ import { Item, BlizzItem, BlizzSearchItem, SearchItem } from "../types";
 import { randomNumber } from "./randomNumber";
 
 export const itemReducer = (item: BlizzItem): Item => {
-  return <Item>(<unknown>{
+  return {
     id: item.id,
     name: item.name,
     quality: item.quality.name,
@@ -13,7 +13,7 @@ export const itemReducer = (item: BlizzItem): Item => {
     media: item.media,
     dropRate: randomNumber(0.001, 0.8, 2),
     price: randomNumber(100, 10000),
-  });
+  };
 };
 
 export const searchItemReducer = (item: BlizzSearchItem): SearchItem => {

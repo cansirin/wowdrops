@@ -7,8 +7,8 @@ export type Item = {
   itemSubClass?: string;
   hand?: string;
   media?: string;
-  price?: string;
-  dropRate?: string;
+  price?: string | number;
+  dropRate?: string | number;
 };
 
 export type BlizzItem = {
