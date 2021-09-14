@@ -1,6 +1,11 @@
 import { useEffect, useRef } from "react";
 
-export const useInterval = (fn: () => void, delay: number | null): void => {
+export const useInterval = (
+  fn: () => void,
+  delay: number | null,
+  repetition?: number | null
+): void => {
+  let x = 0;
   const savedCallback = useRef(fn);
 
   useEffect(() => {
@@ -12,6 +17,10 @@ export const useInterval = (fn: () => void, delay: number | null): void => {
 
     const id = setInterval(() => savedCallback.current(), delay);
 
+    if (++x === repetition) {
+      clearInterval(id);
+    }
+
     return () => clearInterval(id);
-  }, [delay]);
+  }, [delay, repetition, x]);
 };
