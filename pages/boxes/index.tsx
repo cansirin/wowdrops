@@ -1,5 +1,4 @@
 import { FlexRow } from "../../components";
-import { Chest } from "../../components/Chest";
 import {
   Apple,
   Cake,
@@ -10,38 +9,40 @@ import {
   Toast,
   Watermelon,
 } from "../../components/svg";
-import { FC } from "react";
+import React, { FC } from "react";
 import Link from "next/link";
+import { Chest } from "../../components/Chest";
 
 const BoxesPage: FC = () => {
+  const boxes = [
+    {
+      chestSvg: <Watermelon width={300} height={300} />,
+      name: "Watermelon",
+    },
+    { chestSvg: <Apple width={300} height={300} />, name: "Apple" },
+    { chestSvg: <Pear width={300} height={300} />, name: "Pear" },
+    { chestSvg: <Toast width={300} height={300} />, name: "Toast" },
+    { chestSvg: <IceCream width={300} height={300} />, name: "Ice cream" },
+    { chestSvg: <Lollipop width={300} height={300} />, name: "Lollipop" },
+    { chestSvg: <Cake width={300} height={300} />, name: "Cake" },
+    {
+      chestSvg: <Cocktail width={300} height={300} />,
+      name: "Cocktail",
+    },
+  ];
+
   return (
-    <>
-      <h3>Summer</h3>
-      <FlexRow>
-        <Link href="">
-          <Chest
-            chestSvg={<Watermelon width={300} height={300} />}
-            name="Watermelon"
-          />
-        </Link>
-        <Chest chestSvg={<Apple width={300} height={300} />} name="Apple" />
-        <Chest chestSvg={<Pear width={300} height={300} />} name="Pear" />
-        <Chest
-          chestSvg={<Cocktail width={300} height={300} />}
-          name="Cocktail"
-        />
-        <Chest chestSvg={<Toast width={300} height={300} />} name="Toast" />
-        <Chest
-          chestSvg={<IceCream width={300} height={300} />}
-          name="Ice Cream"
-        />
-        <Chest
-          chestSvg={<Lollipop width={300} height={300} />}
-          name="Lollipop"
-        />
-        <Chest chestSvg={<Cake width={300} height={300} />} name="Cake" />
-      </FlexRow>
-    </>
+    <FlexRow>
+      {boxes.map((box, index) => {
+        return (
+          <FlexRow key={index} style={{ cursor: "pointer" }}>
+            <Link href={`/boxes/${box.name.toLowerCase()}`}>
+              <Chest chestSvg={box.chestSvg} name={box.name} key={box.name} />
+            </Link>
+          </FlexRow>
+        );
+      })}
+    </FlexRow>
   );
 };
 
