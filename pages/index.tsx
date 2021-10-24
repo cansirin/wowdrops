@@ -1,52 +1,66 @@
-import React, { useState } from "react";
-import { useFetchItem } from "../hooks/useFetchItem";
-import { Item } from "../apollo/src/types";
-import { Card, FlexCol, FlexRow, ItemList, SearchBar } from "../components";
+import Link from "next/link";
+import React from "react";
+import styled from "styled-components";
+import { qualityColor } from "../utils/qualityColor";
+
+const menuItems = [
+  {
+    name: "Common",
+    active: true,
+  },
+  { name: "Uncommon", active: true },
+  { name: "Rare", active: true },
+  { name: "Epic", active: true },
+  { name: "Legendary", active: false },
+  { name: "Heirloom", active: false },
+  { name: "Artifact", active: false },
+];
 
 const HomePage = () => {
-  const [query, setQuery] = useState("");
-  const [data] = useFetchItem(query);
-  const [addedItems, setAddedItems] = useState<Item[]>([]);
-
-  const addItem = (item: Item) => {
-    const result = [...addedItems, item];
-    setAddedItems(result);
-  };
-
-  const onClick = () => {
-    addItem(data);
-  };
-
-  const handleRemove = (index: string) => {
-    const newItems = addedItems.slice();
-    newItems.splice(parseInt(index), 1);
-    setAddedItems(newItems);
-  };
-
   return (
-    <FlexRow>
-      <FlexCol>
-        {data ? <Card item={data} /> : <p>Cant find</p>}
-        <SearchBar query={query} setQuery={setQuery} onClick={onClick} />
-      </FlexCol>
-
-      <FlexCol>
-        {addedItems.length > 0 ? (
-          <ItemList items={addedItems} onRemove={handleRemove} />
-        ) : (
-          <div
-            style={{
-              border: "2px solid bisque",
-              borderRadius: "0.5rem",
-              padding: "1rem",
-            }}
-          >
-            No items yet
-          </div>
-        )}
-      </FlexCol>
-    </FlexRow>
+    <HomeMenuContainer>
+      <HomeMenuHeader>Start your journey by selecting a box</HomeMenuHeader>
+      {menuItems.map((item, index) => {
+        return (
+          <Link key={index} href={`/boxes/${item.name}`}>
+            <HomeMenuItem backgroundColor={item.active ? item.name : "#fff"}>
+              {item.name}
+              {!item.active ? " 🔒" : ""}
+            </HomeMenuItem>
+          </Link>
+        );
+      })}
+    </HomeMenuContainer>
   );
 };
+
+const HomeMenuContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 100px);
+`;
+
+const HomeMenuHeader = styled.h2`
+  margin: 1.3rem;
+`;
+
+interface HomeMenuItemProps {
+  readonly backgroundColor: string;
+}
+
+const HomeMenuItem = styled.div<HomeMenuItemProps>`
+  font-size: 2rem;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  cursor: pointer;
+
+  
+  &:hover {
+    background-color: ${(props) => qualityColor(props.backgroundColor)}
+`;
 
 export default HomePage;

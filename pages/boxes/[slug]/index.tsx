@@ -26,16 +26,28 @@ const SingularBox = () => {
       <h1>Box of {slug}</h1>
       <FlexCol>
         <FlexRow>
-          <Flippable back={<Card />} front={<Card item={items[2]} />} />
+          <Flippable back={<Card />} front={<Card item={items[10]} />} />
+          <Flippable back={<Card />} front={<Card item={items[12]} />} />
+          <Flippable back={<Card />} front={<Card item={items[14]} />} />
+          <Flippable back={<Card />} front={<Card item={items[11]} />} />
+          <Flippable back={<Card />} front={<Card item={items[13]} />} />
+          <Flippable back={<Card />} front={<Card item={items[4]} />} />
         </FlexRow>
         <FlexRow>
+          <Flippable back={<Card />} front={<Card item={items[2]} />} />
           <Flippable back={<Card />} front={<Card item={items[5]} />} />
           <Flippable back={<Card />} front={<Card item={items[6]} />} />
+          <Flippable back={<Card />} front={<Card item={items[9]} />} />
+          <Flippable back={<Card />} front={<Card item={items[8]} />} />
+          <Flippable back={<Card />} front={<Card item={items[10]} />} />
         </FlexRow>
         <FlexRow>
           <Flippable back={<Card />} front={<Card item={items[7]} />} />
           <Flippable back={<Card />} front={<Card item={items[8]} />} />
           <Flippable back={<Card />} front={<Card item={items[9]} />} />
+          <Flippable back={<Card />} front={<Card item={items[1]} />} />
+          <Flippable back={<Card />} front={<Card item={items[0]} />} />
+          <Flippable back={<Card />} front={<Card item={items[7]} />} />
         </FlexRow>
       </FlexCol>
     </FlexCol>

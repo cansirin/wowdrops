@@ -1,4 +1,4 @@
-import { Color, LinearGradientColor } from "./colors";
+import { Color, LinearGradientColor } from "./wow-colors";
 
 export const qualityColor = (quality: string | undefined) => {
   return Object.values(Color)[Object.keys(Color).indexOf(String(quality))];

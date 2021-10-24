@@ -1,4 +1,4 @@
-import React, { Dispatch, FC, SetStateAction, useState } from "react";
+import React, { FC, useState } from "react";
 import styled from "styled-components";
 import { Button, Card, FlexCol, FlexRow } from "..";
 import { useInterval } from "../../utils/useInterval";
@@ -7,10 +7,9 @@ import Link from "next/link";
 
 type Props = {
   items: Item[];
-  setWinners: Dispatch<SetStateAction<Item[]>>;
 };
 
-export const AutoSlider: FC<Props> = ({ items, setWinners }) => {
+export const AutoSlider: FC<Props> = ({ items }) => {
   const [itemIndex, setItemIndex] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [winners] = useState<Item[]>([]);
@@ -27,7 +26,6 @@ export const AutoSlider: FC<Props> = ({ items, setWinners }) => {
     if (isRunning) {
       winners.push(items[itemIndex]);
       setIsRunning(false);
-      setWinners(winners);
     } else {
       return;
     }

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import Link from "next/link";
 import { FC } from "react";
 import { NextRouter } from "next/router";
+import { websiteColors } from "../../utils/website-colors";
 
 const navigations = [
   { name: "Home", url: "/" },
@@ -18,7 +19,11 @@ export const Navbar: FC<Props> = ({ router }) => {
 
   return (
     <NavbarContainer>
-      <CompanyName>Wow Drops</CompanyName>
+      <Link href="/">
+        <NavbarItem>
+          <CompanyName>Wow Drops</CompanyName>
+        </NavbarItem>
+      </Link>
       {navigations.map((nav) => {
         return (
           <Link href={nav.url} key={nav.url}>
@@ -29,16 +34,16 @@ export const Navbar: FC<Props> = ({ router }) => {
         );
       })}
       {/*{user && <div>a</div>}*/}
-      <Link href="/auth/login">
-        <NavbarItem active={router.asPath === "/auth/login"}>Login</NavbarItem>
-      </Link>
+      {/*<Link href="/auth/login">*/}
+      {/*  <NavbarItem active={router.asPath === "/auth/login"}>Login</NavbarItem>*/}
+      {/*</Link>*/}
     </NavbarContainer>
   );
 };
 
 const NavbarContainer = styled.nav`
   display: flex;
-  background: #0d1b1e;
+  background: ${websiteColors.juniper};
   width: 100%;
   position: sticky;
   top: 0;
@@ -46,6 +51,8 @@ const NavbarContainer = styled.nav`
   justify-content: space-around;
   z-index: 100;
   overflow: hidden;
+  padding-bottom: 1px;
+  border-bottom: ${websiteColors.porshe} 2px solid;
 
   @media (max-width: 768px) {
     flex-direction: column;
@@ -58,14 +65,14 @@ interface NavbarItemProps {
 }
 
 const NavbarItem = styled.a<NavbarItemProps>`
-  color: #d6a2ad;
+  color: ${(props) => (props.active ? websiteColors.porshe : "#fff")};
   font-size: 2rem;
   text-transform: uppercase;
   padding: 2rem 0;
   font-weight: bold;
   letter-spacing: 0.5rem;
   text-decoration: underline
-    rgba(255, 228, 196, ${(props) => (props.active ? 1 : 0)});
+    rgb(251, 204, 96, ${(props) => (props.active ? 1 : 0)});
   text-underline-offset: 0.2em;
   transition: color 0.3s linear, text-decoration-color 300ms;
   cursor: pointer;
@@ -76,15 +83,15 @@ const NavbarItem = styled.a<NavbarItemProps>`
   }
 
   &:hover {
-    color: bisque;
-    text-decoration-color: rgba(255, 228, 196, 1);
+    color: ${websiteColors.blueWood};
+    text-decoration-color: ${websiteColors.blueWood};
   }
 `;
 
-const CompanyName = styled.h2`
-  color: #c4ffd0;
+const CompanyName = styled.span`
+  color: ${websiteColors.porshe};
   text-transform: uppercase;
   letter-spacing: 1rem;
-  text-decoration: underline double;
+  text-decoration: underline;
   text-underline-offset: 0.2em;
 `;

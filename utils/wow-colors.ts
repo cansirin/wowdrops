@@ -1,12 +1,23 @@
+// export const Color = {
+//   Poor: "#9d9d9d",
+//   Common: "#a9a9a9",
+//   Uncommon: "#15bc00",
+//   Rare: "#0070dd",
+//   Epic: "#a335ee",
+//   Legendary: "#ff8000",
+//   Artifact: "#e6cc80",
+//   Heirloom: "#e6cc80",
+// };
+
 export const Color = {
-  Poor: "#9d9d9d",
-  Common: "#717171",
-  Uncommon: "#1eff00",
-  Rare: "#0070dd",
-  Epic: "#a335ee",
-  Legendary: "#ff8000",
-  Artifact: "#e6cc80",
-  Heirloom: "#e6cc80",
+  Poor: "#FCDDF2",
+  Common: "#CFD6EA",
+  Uncommon: "#90BE6D",
+  Rare: "#577590",
+  Epic: "#8661C1",
+  Legendary: "#F8961E",
+  Artifact: "#41E2BA",
+  Heirloom: "#41E2BA",
 };
 
 export const LinearGradientColor = {

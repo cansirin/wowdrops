@@ -5,6 +5,8 @@ import { ApolloProvider } from "@apollo/client";
 import { createGlobalStyle } from "styled-components";
 import { Navbar } from "../components/Navbar";
 import { useRouter } from "next/router";
+import { Layout } from "../components/Layout";
+import { websiteColors } from "../utils/website-colors";
 
 const client = createClient();
 
@@ -13,10 +15,11 @@ const GlobalStyle = createGlobalStyle`
     display: flex;
     flex-direction: column;
     color: white;
-    background-color: #1F2B33;
+    background-color: ${websiteColors.blueWood};
     text-align: center;
     min-height: 100vh;
     font-size: calc(10px + 1vmin);
+    font-family: 'Inter', sans-serif;
   }
 `;
 
@@ -25,10 +28,13 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
 
   return (
     <ApolloProvider client={client}>
-      <GlobalStyle />
-      <Navbar router={router} />
-      <Component {...pageProps} />
+      <Layout>
+        <Navbar router={router} />
+        <GlobalStyle />
+        <Component {...pageProps} />
+      </Layout>
     </ApolloProvider>
   );
 };
+
 export default MyApp;

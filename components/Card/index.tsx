@@ -3,6 +3,7 @@ import React, { FC } from "react";
 import { gradientColor, qualityColor } from "../../utils/qualityColor";
 import { Emoji } from "..";
 import { Item } from "../../apollo/src/types";
+import { websiteColors } from "../../utils/website-colors";
 
 type Props = {
   item?: Item;
@@ -92,7 +93,7 @@ const CardContainer = styled.div<ContainerProps>`
   padding: 0.6rem;
   margin: 0.5rem;
   height: 15rem;
-  background: ${(props) => props.linearGradient}, #252635;
+  background: ${(props) => props.linearGradient}, ${websiteColors.blueWood};
   cursor: pointer;
 
   &:after {
