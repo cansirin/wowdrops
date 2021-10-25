@@ -28,3 +28,8 @@ Screenshots
 ![localhost_3000_boxes](https://user-images.githubusercontent.com/8138047/138617849-41b8c677-caf9-4ce7-9a9c-8a879e11dd2a.png)
 ![localhost_3000_box_pear](https://user-images.githubusercontent.com/8138047/138617852-a3f36c71-10b3-4233-930a-9df25c3cc7de.png)
 ![localhost_3000_items](https://user-images.githubusercontent.com/8138047/138617865-06a6b2ae-800a-4ae3-bbbb-4437774d1538.png)
+
+Colors
+---
+![localhost_3000_colors](https://user-images.githubusercontent.com/8138047/138618862-f1f62c4a-384e-4987-8dab-b148f6158d36.png)
+
